@@ -1,64 +1,43 @@
 package com.example.users.models;
 
+import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import lombok.*;
 
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "users")
 public class UsuarioModel {
 
     @Id
+    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private Long id;
+    private Integer id;
 
+    @NonNull
+    @Column(nullable = false, length = 12)
     private String firstName;
 
+    @NonNull
+    @Column(nullable = false, length = 12)
     private String lastName;
     
+    @NonNull
+    @Column(nullable = false)
     private String email;
     
-    private String contrasena;
+    @NonNull
+    @Column(nullable = false, length = 12)
+    private String contrasena;  
 
-    public Long getId() {
-        return id;
-    }
+    private LocalDateTime created_at;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-    
+    private LocalDateTime updated_at;
     
 }
 
