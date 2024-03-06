@@ -1,64 +1,46 @@
 package com.example.users.models;
 
+import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import lombok.*;
 
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "users")
 public class UsuarioModel {
 
     @Id
+    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
-    private Long id;
+    @Column(unique = true, nullable = false, name = "id")
+    private Integer id;
 
+    @NonNull
+    @Column(nullable = false, length = 12, name = "first_Name")
     private String firstName;
 
+    @NonNull
+    @Column(nullable = false, length = 12, name = "last_Name")
     private String lastName;
     
+    @NonNull
+    @Column(nullable = false, name = "email")
     private String email;
     
-    private String contrasena;
+    @NonNull
+    @Column(nullable = false, length = 12, name = "contrasena")
+    private String contrasena;  
 
-    public Long getId() {
-        return id;
-    }
+    @Column(name = "created_at")
+    private LocalDateTime created_at;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-    
+    @Column(name = "updated_at")
+    private LocalDateTime updated_at;
     
 }
 
