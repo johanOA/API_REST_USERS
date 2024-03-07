@@ -11,6 +11,8 @@ import java.util.Optional;
 public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
+    @Autowired
+    RandomString randomString;
 
     public UsuarioModel guardarUsuario(UsuarioModel usuario){
         return usuarioRepository.save(usuario);
@@ -21,8 +23,25 @@ public class UsuarioService {
         return optionalUsuario.orElse(null);
     }
 
-    public UsuarioModel actualizarUsuario(UsuarioModel usuario) {
-        return usuarioRepository.save(usuario);
+    public UsuarioModel actualizarUsuario(int id, UsuarioModel usuario) {
+        UsuarioModel usuarioAux = usuarioRepository.findById(id).get();
+        usuarioAux.setFirstName(usuario.getFirstName());
+        usuarioAux.setLastName(usuario.getLastName());
+        return usuarioRepository.save(usuarioAux);
+    }
+
+    public UsuarioModel cambiarContraseña(int id, UsuarioModel usuario) {
+        UsuarioModel usuarioAux = usuarioRepository.findById(id).get();
+        usuarioAux.setContrasena(usuario.getContrasena());
+        return usuarioRepository.save(usuarioAux);
+    }
+
+    public String recuperarContraseña(String email) {
+        UsuarioModel usuarioAux = usuarioRepository.obtenerUsuarioPorEmail(email);
+        String randomPassword = randomString.generateRandomString(8);
+        usuarioAux.setContrasena(randomPassword);
+        usuarioRepository.save(usuarioAux);
+        return randomPassword; 
     }
 
     public boolean eliminarUsuario(Integer id) {
