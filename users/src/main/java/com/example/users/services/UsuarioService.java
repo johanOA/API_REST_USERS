@@ -12,7 +12,8 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
     @Autowired
-    RandomString randomString;
+    JwtInterface jwtInterface;
+  
 
     public UsuarioModel guardarUsuario(UsuarioModel usuario){
         return usuarioRepository.save(usuario);
@@ -37,11 +38,7 @@ public class UsuarioService {
     }
 
     public String recuperarContraseña(String email) {
-        UsuarioModel usuarioAux = usuarioRepository.obtenerUsuarioPorEmail(email);
-        String randomPassword = randomString.generateRandomString(8);
-        usuarioAux.setContrasena(randomPassword);
-        usuarioRepository.save(usuarioAux);
-        return randomPassword; 
+        return jwtInterface.generateToken(email); 
     }
 
     public boolean eliminarUsuario(Integer id) {
