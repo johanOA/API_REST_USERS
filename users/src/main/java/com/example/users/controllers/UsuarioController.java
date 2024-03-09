@@ -10,6 +10,7 @@ import com.example.users.services.JwtInterface;
 import com.example.users.services.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {

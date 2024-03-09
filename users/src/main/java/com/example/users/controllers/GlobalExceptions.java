@@ -9,9 +9,6 @@ import io.jsonwebtoken.ExpiredJwtException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
-//import org.springframework.security.access.AccessDeniedException;
-//import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -21,10 +18,6 @@ import java.util.List;
 
 @RestControllerAdvice
 public class GlobalExceptions {
-    @ExceptionHandler(BadCredentialsException.class)
-    public ResponseEntity<MessageDTO> badCredentialsException(BadCredentialsException e){
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new MessageDTO(HttpStatus.UNAUTHORIZED, true, "Datos de autenticación incorrectos") );
-    }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<MessageDTO> generalException(Exception e){
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MessageDTO(HttpStatus.INTERNAL_SERVER_ERROR, true, e.getMessage()) );

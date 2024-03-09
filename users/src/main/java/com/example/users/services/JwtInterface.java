@@ -22,8 +22,8 @@ public class JwtInterface {
     @Value("${jwt.expiration}")
     private long jwtExpiration;
 
-    public String generateToken(String usuario) {
-        return buildToken(new HashMap<>(), usuario);
+    public String generateToken(String email) {
+        return buildToken(new HashMap<>(), email);
     }
 
     private String buildToken(Map<String, Object> extraClaims, String email) {
