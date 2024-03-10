@@ -48,4 +48,5 @@ INSERT INTO users(id, first_Name, last_Name, email, contrasena, created_at, upda
 (32, 'Valeria', 'Gutierrez', 'valeria@email.com', 'valeria789', '2021-01-25 10:00:00', '2023-04-05 09:45:00'),
 (33, 'Pablo', 'Alvarez', 'pablo@email.com', 'pablo123', '2022-04-30 12:45:00', '2023-07-10 11:20:00'),
 (34, 'Luisa', 'Romero', 'luisa@email.com', 'luisa456', '2023-07-05 15:30:00', '2024-09-15 14:15:00'),
-(35, 'Andres', 'Torres', 'andres@email.com', 'andres789', '2024-02-10 11:20:00', '2024-03-01 10:00:00');
+(35, 'Andres', 'Torres', 'andres@email.com', 'andres789', '2024-02-10 11:20:00', '2024-03-01 10:00:00'),
+(36, 'Andres', 'Castro', 'andresf.castroc1@uqvirtual.edu.co', 'andres1234', '2024-02-10 11:26:00', '2024-02-10 11:30:00');

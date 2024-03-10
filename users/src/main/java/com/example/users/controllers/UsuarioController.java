@@ -28,8 +28,8 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<MessageDTO> obtenerUsuarioPorId(@PathVariable Integer id) {
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new MessageDTO(HttpStatus.CREATED, false, usuarioService.obtenerUsuarioPorId(id)));
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new MessageDTO(HttpStatus.OK, false, usuarioService.obtenerUsuarioPorId(id)));
     }
 
     @PutMapping("/{id}")
@@ -49,7 +49,7 @@ public class UsuarioController {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(new MessageDTO(HttpStatus.UNAUTHORIZED, true,
-                            "Se requiere un token JWT en la cabecera Authorization\""));
+                            "Se requiere un token JWT en la cabecera Authorization"));
         }
 
     }
@@ -92,16 +92,14 @@ public class UsuarioController {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(new MessageDTO(HttpStatus.UNAUTHORIZED, true,
-                            "Se requiere un token JWT en la cabecera Authorization\""));
+                            "Se requiere un token JWT en la cabecera Authorization"));
         }
 
     }
 
-    @GetMapping("recuperarContraseña/{email}")
-    public ResponseEntity<MessageDTO> recuperarContraseña(@PathVariable String email) {
+    @PostMapping("recuperarContraseña/{email}")
+    public ResponseEntity<MessageDTO> recuperarContraseña(@PathVariable String email) throws Exception {
 
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(new MessageDTO(HttpStatus.OK, false, usuarioService.recuperarContraseña(email)));
-
+        return ResponseEntity.status(HttpStatus.OK).body(new MessageDTO(HttpStatus.OK, false, usuarioService.recuperarContraseña(email)));
     }
 }
